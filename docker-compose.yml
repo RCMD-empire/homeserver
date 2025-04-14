@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  cups:
+    image: olbat/cupsd
+    container_name: cups-server
+    restart: unless-stopped
+    ports:
+      - "631:631"
+    environment:
+      - CUPS_ADMIN_USERNAME=${CUPS_ADMIN_USERNAME}
+      - CUPS_ADMIN_PASSWORD=${CUPS_ADMIN_PASSWORD}
+    devices:
+      - "/dev/bus/usb:/dev/bus/usb"
+    volumes:
+      - ./cups-config:/etc/cups
+      - ./cups-logs:/var/log/cups
+      - ./cups-spool:/var/spool/cups
+
+  samba:
+    image: dperson/samba
+    container_name: samba-server
+    restart: unless-stopped
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139"
+      - "445:445"
+    command: >
+  -u "${SAMBA_USER};${SAMBA_PASS}"
+  -s "printers;/var/spool/samba;yes;no;yes"
+    volumes:
+      - ./samba-share:/var/spool/samba
+
+  airprint:
+    image: mwader/airprint-bridge
+    container_name: airprint-server
+    restart: unless-stopped
+    network_mode: "host"
+    environment:
+      - CUPS_SERVER=localhost
+    depends_on:
+      - cups
