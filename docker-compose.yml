@@ -41,3 +41,22 @@ services:
       - CUPS_SERVER=localhost
     depends_on:
       - cups
+      
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard-vpn
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    volumes:
+      - ./wireguard:/config
+      - /lib/modules:/lib/modules
+    ports:
+      - "51820:51820/udp"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
