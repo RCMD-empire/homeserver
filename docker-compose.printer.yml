@@ -13,6 +13,7 @@ services:
     devices:
       - "/dev/bus/usb:/dev/bus/usb"
     volumes:
+      - ./cups-config:/etc/cups
       - ./cups-logs:/var/log/cups
       - ./cups-spool:/var/spool/cups
 
