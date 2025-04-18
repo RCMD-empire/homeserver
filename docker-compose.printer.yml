@@ -2,14 +2,14 @@ version: '3'
 
 services:
   cups:
-    image: olbat/cupsd
+    image: ydkn/cups
     container_name: cups-server
     restart: unless-stopped
     ports:
       - "631:631"
     environment:
-      - CUPS_ADMIN_USERNAME=${CUPS_ADMIN_USERNAME}
-      - CUPS_ADMIN_PASSWORD=${CUPS_ADMIN_PASSWORD}
+      - CUPSADMIN=${CUPS_ADMIN_USERNAME}
+      - CUPSPASSWORD=${CUPS_ADMIN_PASSWORD}
     devices:
       - "/dev/bus/usb:/dev/bus/usb"
     volumes:
