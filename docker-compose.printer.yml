@@ -2,7 +2,7 @@ version: '3'
 
 services:
   cups:
-    image: ydkn/cups
+    image: anujdatar/cups
     container_name: cups-server
     restart: unless-stopped
     ports:
