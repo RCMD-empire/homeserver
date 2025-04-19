@@ -2,10 +2,7 @@ version: '3'
 
 services:
   cups:
-    build:
-      context: .
-      dockerfile: Dockerfile-cups
-    image: custom-cups
+    image: anujdatar/cups
     container_name: cups-server
     restart: unless-stopped
     ports:
@@ -20,13 +17,6 @@ services:
       - ./cups-logs:/var/log/cups
       - ./cups-spool:/var/spool/cups
       - /var/run/dbus:/var/run/dbus
-      - ./cups-config/99-cups-printer.rules:/etc/udev/rules.d/99-cups-printer.rules  # udev rule
-    cap_add:
-      - SYS_ADMIN
-      - SYS_RAWIO
-      - MKNOD
-    command: >
-      sh -c "udevd --daemon && service cups start && tail -f /dev/null"
 
   samba:
     image: dperson/samba
