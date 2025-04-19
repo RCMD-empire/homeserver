@@ -16,6 +16,7 @@ services:
       - ./cups-config:/etc/cups
       - ./cups-logs:/var/log/cups
       - ./cups-spool:/var/spool/cups
+      - /var/run/dbus:/var/run/dbus
 
   samba:
     image: dperson/samba
