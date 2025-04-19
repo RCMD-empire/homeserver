@@ -2,7 +2,10 @@ version: '3'
 
 services:
   cups:
-    image: anujdatar/cups
+    build:
+      context: .
+      dockerfile: Dockerfile.cups.yml
+    image: custom-cups
     container_name: cups-server
     restart: unless-stopped
     ports:
