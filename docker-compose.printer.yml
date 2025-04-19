@@ -4,7 +4,7 @@ services:
   cups:
     build:
       context: .
-      dockerfile: Dockerfile.cups.yml
+      dockerfile: Dockerfile-cups
     image: custom-cups
     container_name: cups-server
     restart: unless-stopped
