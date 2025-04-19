@@ -11,7 +11,7 @@ services:
       - CUPSADMIN=${CUPS_ADMIN_USERNAME}
       - CUPSPASSWORD=${CUPS_ADMIN_PASSWORD}
     devices:
-      - "/dev/bus/usb:/dev/bus/usb"
+      - "/dev/bus:/dev/bus"
     volumes:
       - ./cups-config:/etc/cups
       - ./cups-logs:/var/log/cups
