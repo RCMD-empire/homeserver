@@ -17,6 +17,10 @@ services:
       - ./cups-logs:/var/log/cups
       - ./cups-spool:/var/spool/cups
       - /var/run/dbus:/var/run/dbus
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RAWIO
+      - MKNOD
 
   samba:
     image: dperson/samba
