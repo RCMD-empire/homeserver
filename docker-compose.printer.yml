@@ -5,7 +5,6 @@ services:
     image: anujdatar/cups
     container_name: cups-server
     restart: unless-stopped
-    network_mode: "host"
     ports:
       - "631:631"
     environment:

@@ -1,5 +1,0 @@
-FROM anujdatar/cups
-
-RUN apt-get update && apt-get install -y udev
-
-CMD ["sh", "-c", "udevd --daemon && service cups start && tail -f /dev/null"]
