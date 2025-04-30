@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  cups:
+    image: anujdatar/cups
+    container_name: cups-server
+    restart: unless-stopped
+    ports:
+      - "631:631"
+    environment:
+      - CUPSADMIN=${CUPS_ADMIN_USERNAME}
+      - CUPSPASSWORD=${CUPS_ADMIN_PASSWORD}
+    devices:
+      - "/dev/bus:/dev/bus"
+    volumes:
+      - ./cups-config:/etc/cups
+      - ./cups-logs:/var/log/cups
+      - ./cups-spool:/var/spool/cups
+      - /var/run/dbus:/var/run/dbus
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RAWIO
+      - MKNOD
+
+  samba:
+    image: dperson/samba
+    container_name: samba-server
+    restart: unless-stopped
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139"
+      - "445:445"
+    command: >
+      -u "${SAMBA_USER};${SAMBA_PASS}"
+      -s "printers;/var/spool/samba;yes;no;yes"
+    volumes:
+      - ./samba-share:/var/spool/samba
+      
