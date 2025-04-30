@@ -11,6 +11,7 @@ services:
       - "/dev/bus:/dev/bus"
     volumes:
       - ./scanservjs-config:/app/config
+      - ./scanned-media:/app/data/output
       - /var/run/dbus:/var/run/dbus
     cap_add:
       - SYS_ADMIN
