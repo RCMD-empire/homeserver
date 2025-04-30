@@ -10,6 +10,7 @@ services:
     environment:
       - CUPS_ADMIN_USERNAME=${CUPS_ADMIN_USERNAME}
       - CUPS_ADMIN_PASSWORD=${CUPS_ADMIN_PASSWORD}
+      - TZ=Europe/Budapest
     devices:
       - "/dev/bus/usb:/dev/bus/usb"
     volumes:
