@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  scanservjs:
+    image: sbs20/scanservjs:v3.0.3
+    container_name: scanner-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    devices:
+      - "/dev/bus:/dev/bus"
+    volumes:
+      - ./scanservjs-config:/app/config
+      - /var/run/dbus:/var/run/dbus
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RAWIO
+      - MKNOD
