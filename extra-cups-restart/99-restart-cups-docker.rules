@@ -1,1 +1,0 @@
-ACTION=="add", SUBSYSTEM=="usb", ENV{ID_VENDOR_ID}=="04b8", ENV{ID_MODEL_ID}=="0863", RUN+="/usr/local/bin/restart-cups-docker.sh"

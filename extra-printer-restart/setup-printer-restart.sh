@@ -2,15 +2,14 @@
 
 # ----------- CONFIGURATION ----------- #
 REPO_ROOT="/home/rcmd/homeserver/homeserver"
-EXTRA_FOLDER="$REPO_ROOT/extra-cups-restart"
-UDEV_RULES_FILE="99-restart-cups-docker.rules"
-RESTART_SCRIPT="restart-cups-docker.sh"
+EXTRA_FOLDER="$REPO_ROOT/extra-printer-restart"
+UDEV_RULES_FILE="99-restart-printer-docker-containers.rules"
+RESTART_SCRIPT="restart-printer-docker-containers.sh"
 DEST_UDEV_RULE="/etc/udev/rules.d/$UDEV_RULES_FILE"
-TARGET_SCRIPT_PATH="/usr/local/bin/restart-cups-docker.sh"
-DOCKER_COMPOSE_FILE="$REPO_ROOT/docker-compose.printer.yml"
+TARGET_SCRIPT_PATH="/usr/local/bin/$RESTART_SCRIPT"
 # ------------------------------------- #
 
-echo "Setting up printer reconnect restart script for CUPS container..."
+echo "Setting up printer reconnect restart script for containers..."
 
 # Step 1: Copy udev rule
 echo "Copying udev rule to $DEST_UDEV_RULE..."
