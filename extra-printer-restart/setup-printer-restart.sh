@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ----------- CONFIGURATION ----------- #
-REPO_ROOT="/home/rcmd/homeserver/homeserver"
+REPO_ROOT="/home/rcmd/homeserver/"
 EXTRA_FOLDER="$REPO_ROOT/extra-printer-restart"
 UDEV_RULES_FILE="99-restart-printer-docker-containers.rules"
 RESTART_SCRIPT="restart-printer-docker-containers.sh"

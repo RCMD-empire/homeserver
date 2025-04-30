@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-COMPOSE_FILES_PATH="/home/rcmd/homeserver/homeserver/"
+COMPOSE_FILES_PATH="/home/rcmd/homeserver/"
 
 COMPOSE_FILE_CUPS="docker-compose.printer.yml"
 CUPS_SERVICE_NAME="cups"
